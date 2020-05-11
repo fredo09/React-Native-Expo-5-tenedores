@@ -5,7 +5,7 @@
 import React from 'react';
 import { View, Text } from 'react-native';
 
-export const Search = () => {
+export const AccountScreen = () => {
     return(
         <View>
             <Text>Estamos account</Text>

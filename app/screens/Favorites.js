@@ -5,7 +5,7 @@
 import React from 'react';
 import { View, Text } from 'react-native';
 
-export const Favorites = () => {
+export const FavoritesScreen= () => {
     return(
         <View>
             <Text>Estamos en el Favorites</Text>

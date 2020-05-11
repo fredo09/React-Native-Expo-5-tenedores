@@ -5,7 +5,7 @@
 import React from 'react';
 import { View, Text } from 'react-native';
 
-export const Search = () => {
+export const SearchScreen = () => {
     return(
         <View>
             <Text>Estamos en el buscador de restaurantes</Text>
