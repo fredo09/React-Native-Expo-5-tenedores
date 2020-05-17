@@ -5,6 +5,7 @@
 import React from 'react';
 import { NavigationContainer } from '@react-navigation/native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
+import { Icon } from 'react-native-elements';
 
 import { RestaurantStack } from './RestaurantStack';
 import { AccountStack } from './AccountStack';
@@ -15,10 +16,20 @@ import { TopRestaurantsStack } from './TopRestaurants';
 //Version 5 de tabNavigation
 const Tab = createBottomTabNavigator();
 
-export const Navigation = () => {
+export const NavigationStacks = () => {
     return(
         <NavigationContainer>
-            <Tab.Navigator>
+          { /* Agregar opciones de tabs */} 
+          <Tab.Navigator
+               initialRouteName = "Restaurantes"
+               tabBarOptions={{
+                    activeTintColor: '#00a680',
+                    inactiveTintColor: '#646464'
+               }}
+               screenOptions={({ route }) =>({
+                    tabBarIcon: ({ color }) => screenOptions(route, color),
+               })}
+          >
                 {/* Screen Nvigation */}
                 <Tab.Screen 
                     name="Restaurantes" 
@@ -43,4 +54,32 @@ export const Navigation = () => {
             </Tab.Navigator>
         </NavigationContainer>
     );
+}
+
+const screenOptions = ( route, color ) =>{
+     let iconName
+     
+     switch (route.name) {
+          case 'Restaurantes':
+               iconName = 'compass-outline';
+               break;
+          case 'Favorites':
+               iconName = 'heart-outline';
+               break;
+          case 'Search':
+               iconName = 'magnify';
+               break;
+          case 'TopRestaurantes':
+               iconName = 'star-outline';
+               break;
+          case 'Account':
+               iconName = 'home-outline';
+               break;
+          default:
+               break;
+     }
+
+     return (
+          <Icon type="material-community" name={iconName} size={22} color={color}/>
+     )
 }
