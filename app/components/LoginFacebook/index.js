@@ -4,9 +4,9 @@
 
 import React, { useState }from 'react';
 import { SocialIcon } from 'react-native-elements';
-// import { FacebookApi } from './../../utils/Social';
+import { FacebookApi } from './../../utils/Social' ;
 import { Loading } from './../Loading';
-// import * as Facebook from 'expo-facebook';
+import * as Facebook from 'expo-facebook';
 import * as Firebase from 'firebase';
 
 export const SocialButtonFacebook = (props) => {
@@ -14,29 +14,35 @@ export const SocialButtonFacebook = (props) => {
     const [ isLoading, setLoading ] = useState(false);
 
     const login_facebook = async () => {
-        /*setLoading(true);
+        console.log('Login con Facebook');
 
-        const { type, token } = await Facebook.logInWithReadPermissionsAsync(
-            FacebookApi.application_id,
-            { permissions: FacebookApi.permissions }
-        );
-        switch(type){
+        await Facebook.initializeAsync(FacebookApi.application_id);
+
+        const { type, token } = await Facebook.logInWithReadPermissionsAsync({ 
+            FacebookApi
+        });
+    
+        switch (type) {
             case 'success':
-                const credentials = Firebase.auth.FacebookAuthProvider(token);
+                const credentials = Firebase.auth.FacebookAuthProvider.credential(token);
                 await Firebase
                     .auth()
                     .signInWithCredential(credentials)
                     .then(() => {
                         navigation.navigate('Account');
                     })
-                    .catch(() => {
-                        toastRef.current.show('Ocurrio un Error X(');
-                    })
+                    .catch((err) => {
+                        console.log(err)
+                        toastRef.current.show('Ocurrio un Error');
+                    });
+                break;
             case 'cancel':
-                toastRef.current.show('No se pudo hacer login con Facebook');
+                toastRef.current.show('No se pude hacer login con Facebook');
+                break;
+            default:
+                toastRef.current.show('Ocurrio un error, intena mas tarde!');
+                break;
         }
-        setLoading(false);*/
-        console.log('Login con Facebook');
     }
 
     return(
