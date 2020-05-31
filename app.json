@@ -25,7 +25,12 @@
       "supportsTablet": true
     },
     "android":{
-      "permissions": ["CAMERA_ROLL", "LOCATION"]
+      "permissions": [
+        "CAMERA_ROLL",
+        "LOCATION",
+        "READ_EXTERNAL_STORAGE",
+        "WRITE_EXTERNAL_STORAGE"
+      ]
     }
   }
 }
